@@ -1,6 +1,7 @@
 import React from 'react';
 import { generatePassword } from "./../services/password-generator";
 import AskForCharType from "./ask-for-char-type";
+import Footer from './footer';
 
 class App extends React.Component {
 
@@ -51,51 +52,52 @@ class App extends React.Component {
     render(){
         let generatedPassword = generatePassword(this.state.charTypes, this.state.strength);
         return (
-            <div id="app-body" className="password-generator">
+            <div className="react-app">
+                <div className="password-generator">
+                    <h1 className="password-generator--title">
+                        Password Generator
+                    </h1>
 
-                <h1 className="password-generator--title">
-                    Password Generator
-                </h1>
-
-                <input
-                    className="password-generator--field"
-                    readOnly={true}
-                    value={generatedPassword} />
-
-                <div className="form-control">
-                    <label>
-                        Password length/strength
-                        ({ this.state.strength })
-                    </label>
                     <input
-                        className="password-generator--range"
-                        type="range"
-                        min="8"
-                        max="20"
-                        step="2"
-                        value={this.state.strength}
-                        onChange={this.onStrengthChange} />
+                        className="password-generator--field"
+                        readOnly={true}
+                        value={generatedPassword} />
+
+                    <div className="form-control">
+                        <label>
+                            Password length/strength
+                            ({ this.state.strength })
+                        </label>
+                        <input
+                            className="password-generator--range"
+                            type="range"
+                            min="8"
+                            max="20"
+                            step="2"
+                            value={this.state.strength}
+                            onChange={this.onStrengthChange} />
+                    </div>
+
+                    <AskForCharType
+                        charType="upper-case letters"
+                        charKey="ABC"
+                        onChange={this.onCharTypesChange}
+                        checked={this.state.charTypes.indexOf("ABC") > -1}
+                    />
+                    <AskForCharType
+                        charType="lower-case letters"
+                        charKey="abc"
+                        onChange={this.onCharTypesChange}
+                        checked={this.state.charTypes.indexOf("abc") > -1}
+                    />
+                    <AskForCharType
+                        charType="numbers"
+                        charKey="123"
+                        onChange={this.onCharTypesChange}
+                        checked={this.state.charTypes.indexOf("123") > -1}
+                    />
                 </div>
-
-                <AskForCharType
-                    charType="upper-case letters"
-                    charKey="ABC"
-                    onChange={this.onCharTypesChange}
-                    checked={this.state.charTypes.indexOf("ABC") > -1}
-                />
-                <AskForCharType
-                    charType="lower-case letters"
-                    charKey="abc"
-                    onChange={this.onCharTypesChange}
-                    checked={this.state.charTypes.indexOf("abc") > -1}
-                />
-                <AskForCharType
-                    charType="numbers"
-                    charKey="123"
-                    onChange={this.onCharTypesChange}
-                    checked={this.state.charTypes.indexOf("123") > -1}
-                />
-
+                <Footer />
             </div>
         );
     }

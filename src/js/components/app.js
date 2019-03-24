@@ -1,7 +1,7 @@
 import React from 'react';
 import { generatePassword } from "./../services/password-generator";
-import AskForCharType from "./ask-for-char-type";
-import Footer from './footer';
+import AskForCharType from "./AskForCharType";
+import Footer from './Footer';
 
 class App extends React.Component {
 

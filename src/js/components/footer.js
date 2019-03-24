@@ -2,13 +2,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="footer">
-            <p>
-                Designed & Developed by
-                &nbsp;
+        <footer className="footer">
+            <p className="ta-center">
                 <a target="_blank" href="http://github.com/inambe">Inam Ul Huq</a>
             </p>
-        </div>
+        </footer>
     );
 };
 
